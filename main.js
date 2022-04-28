@@ -74,8 +74,8 @@ videoLabel.forEach(e => {
         });
         videoDescription.innerText = t.join("");
         videos.forEach((e) => {
-            e.style.display = "none";
             e.pause();
+            e.style.display = "none";
         });
         videos.forEach(ele => {
             if (ele.getAttribute("data") === e.getAttribute("data")) {
@@ -97,6 +97,7 @@ shuffleBtn.addEventListener("click", function () {
         e.classList.remove("clicked-video");
     });
     let random = Math.floor(Math.random() * 10);
+    console.log(random);
     videoLabel[random].classList.add("clicked-video");
     videos.forEach(ele => {
         if (ele.getAttribute("data") === videoLabel[random].getAttribute("data")) {
@@ -122,182 +123,192 @@ let allElements = document.body.getElementsByTagName("*");
 document.querySelectorAll(".team-members .container .box").forEach(e => {
     e.style.setProperty("--psedou-color", "#eee");
 });
-function darkMode() { 
+function black(e) { 
+    e.style.setProperty("background-color", "#191919");
+    e.style.setProperty("color", "white");
+}
+function darkgrey(e) { 
+    e.style.setProperty("background-color", "#333333");
+    e.style.setProperty("color", "white");
+}
+function white(e) { 
+    e.style.setProperty("background-color", "white");
+    e.style.setProperty("color", "black");
+}
+function grey(e) { 
+    e.style.setProperty("background-color", "var(--main-background-color)");
+    e.style.setProperty("color", "black");
+}
+function darkMode() {
     window.localStorage.setItem("dark", true);
-        darkModeBtn.classList.add("clicked");
-        for (let i = 0; i < allElements.length; i++) { 
-            allElements[i].style.cssText = "transition: 0.3s;   -webkit-transition: 0.3s;  -moz-transition: 0.3s;  -ms-transition: 0.3s;  -o-transition: 0.3s;";
-            if (allElements[i].tagName.toLowerCase() !== "i" &&
-                allElements[i].tagName.toLowerCase() !== "span" &&
-                allElements[i].tagName.toLowerCase() !== "h3" &&
-                allElements[i].tagName.toLowerCase() !== "img" &&
-                allElements[i].tagName.toLowerCase() !== "h1" &&
-                allElements[i].tagName.toLowerCase() !== "h2" &&
-                allElements[i].tagName.toLowerCase() !== "h3" &&
-                allElements[i].tagName.toLowerCase() !== "h4" &&
-                allElements[i].tagName.toLowerCase() !== "p" &&
-                allElements[i].tagName.toLowerCase() !== "input" &&
-                allElements[i].tagName.toLowerCase() !== "button" &&
-                allElements[i].tagName.toLowerCase() !== "textarea" &&
-                allElements[i].tagName.toLowerCase() !== "video" &&
-                allElements[i].className !== "container" &&
-                allElements[i].className !== "info" &&
-                allElements[i].className !== "social" &&
-                allElements[i].className !== "text" &&
-                allElements[i].className !== "box") { 
-                allElements[i].classList.add("dark");
-            }
+    darkModeBtn.classList.add("clicked");
+    for (let i = 0; i < allElements.length; i++) {
+        allElements[i].style.cssText = "transition: 0.3s;   -webkit-transition: 0.3s;  -moz-transition: 0.3s;  -ms-transition: 0.3s;  -o-transition: 0.3s;";
+        if (allElements[i].tagName.toLowerCase() !== "i" &&
+            allElements[i].tagName.toLowerCase() !== "span" &&
+            allElements[i].tagName.toLowerCase() !== "h3" &&
+            allElements[i].tagName.toLowerCase() !== "img" &&
+            allElements[i].tagName.toLowerCase() !== "h1" &&
+            allElements[i].tagName.toLowerCase() !== "h2" &&
+            allElements[i].tagName.toLowerCase() !== "h3" &&
+            allElements[i].tagName.toLowerCase() !== "h4" &&
+            allElements[i].tagName.toLowerCase() !== "p" &&
+            allElements[i].tagName.toLowerCase() !== "input" &&
+            allElements[i].tagName.toLowerCase() !== "button" &&
+            allElements[i].tagName.toLowerCase() !== "textarea" &&
+            allElements[i].tagName.toLowerCase() !== "video" &&
+            allElements[i].className !== "container" &&
+            allElements[i].className !== "info" && allElements[i].className !== "social" &&
+            allElements[i].className !== "text" &&
+            allElements[i].className !== "box") {
+            allElements[i].classList.add("dark");
         }
-        // main heading
-        document.querySelectorAll(".main-heading").forEach(e => {
-            e.style.setProperty("color", "white");
-        });
-        // header
-        document.querySelector("header").style.cssText = "box-shadow: 0 2px 15px rgb(255 255 255 / 10%);";
-        document.querySelector(".mega-menu").style.setProperty("background-color", "#191919");
-        document.querySelectorAll(".nav-bar a").forEach(e => {
-            e.style.cssText = "background-color: #191919; color: white;";
-        });
-        circle.style.cssText = "left:27px;  background-color: #ffffff; ";
-        document.querySelectorAll("ul.nav-bar li a").forEach(e => {
-            e.onmouseenter = function () {
-                e.style.color = "var(--main-color)";
-            };
-            e.onmouseleave = function () {
-                e.style.color = "white";
-            };
-        });
-        // landing
-        document.querySelector(".landing").style.setProperty("background-color", "#333333");
-        document.querySelector(".landing").style.setProperty("--psedou-color", "#191919");
-        // articles
-        document.querySelectorAll(".articles .container .box").forEach(e => {
-            e.style.setProperty("background-color", "#191919");
+    }
+    // main heading
+    document.querySelectorAll(".main-heading").forEach(e => {
+        e.style.setProperty("color", "white");
+    });
+    // header
+    document.querySelector("header").style.cssText = "box-shadow: 0 2px 15px rgb(255 255 255 / 10%);";
+    black(document.querySelector(".mega-menu"));
+    document.querySelectorAll(".nav-bar a").forEach(e => {
+        black(e);
+    });
+    circle.style.cssText = "left:27px;  background-color: #ffffff; ";
+    document.querySelectorAll("ul.nav-bar li a").forEach(e => {
+        e.onmouseenter = function () {
+            e.style.color = "var(--main-color)";
+        };
+        e.onmouseleave = function () {
+            e.style.color = "white";
+        };
+    });
+    // landing
+    darkgrey(document.querySelector(".landing"));
+    document.querySelector(".landing").style.setProperty("--psedou-color", "#191919");
+    // articles
+    document.querySelectorAll(".articles .container .box").forEach(e => {
+        black(e);
+        e.style.setProperty("box-shadow", "0 2px 15px rgb(255 255 255 / 10%)");
+        e.onmouseenter = function () {
+            e.style.setProperty("box-shadow", "0 2px 15px rgb(255 255 255 / 30%)")
+        };
+        e.onmouseleave = function () {
             e.style.setProperty("box-shadow", "0 2px 15px rgb(255 255 255 / 10%)");
-            e.onmouseenter = function () {
-                e.style.setProperty("box-shadow", "0 2px 15px rgb(255 255 255 / 30%)")
-            };
-            e.onmouseleave = function () {
-                e.style.setProperty("box-shadow", "0 2px 15px rgb(255 255 255 / 10%)");
-            };
-        });
-        // gallery
-        document.querySelector(".gallery").style.setProperty("background-color", "#333333");
-        document.querySelectorAll(".gallery .container .picture").forEach(e => {
-            e.style.setProperty("border-color", "#191919");
-        });
-        // features
-        document.querySelectorAll(".features .container .box .image").forEach(e => {
-            e.style.setProperty("--psedou-color", "#191919");
-        });
-        // testimonials
-        document.querySelector(".testimonials").style.setProperty("background-color", "#333333");
-        document.querySelectorAll(".testimonials .container .box").forEach(e => {
-            e.style.setProperty("background-color", "#191919");
+        };
+    });
+    // gallery
+    darkgrey(document.querySelector(".gallery"));
+    document.querySelectorAll(".gallery .container .picture").forEach(e => {
+        black(e);
+    });
+    // features
+    document.querySelectorAll(".features .container .box .image").forEach(e => {
+        black(e);
+    });
+    // testimonials
+    darkgrey(document.querySelector(".testimonials"));
+    document.querySelectorAll(".testimonials .container .box").forEach(e => {
+        black(e);
+        e.style.setProperty("box-shadow", "0 2px 15px rgb(255 255 255 / 10%)");
+        e.onmouseenter = function () {
+            e.style.setProperty("box-shadow", "0 2px 15px rgb(255 255 255 / 30%)");
+        };
+        e.onmouseleave = function () {
             e.style.setProperty("box-shadow", "0 2px 15px rgb(255 255 255 / 10%)");
-            e.onmouseenter = function () {
-                e.style.setProperty("box-shadow", "0 2px 15px rgb(255 255 255 / 30%)");
-            };
-            e.onmouseleave = function () { 
-                e.style.setProperty("box-shadow", "0 2px 15px rgb(255 255 255 / 10%)");
-            }
-        });
-        document.querySelectorAll(".testimonials .container .box .pic").forEach(e => {
-            e.style.setProperty("border-color", "#333333");
-        });
-        // team-members
-        document.querySelectorAll(".team-members .container .box").forEach(e => {
-            e.style.setProperty("--psedou-color", "#333333");
-        });
-        document.querySelectorAll(".team-members .container .box").forEach(e => {
-            e.style.setProperty("--team-slider-color", "#474747");
-        });
-        document.querySelectorAll(".team-members .container .box .pic").forEach(e => {
-            e.style.setProperty("background-color","transparent");
-        });
-        document.querySelectorAll(".social a").forEach(e => {
-            e.style.setProperty("background-color","transparent");
-        });
-        // sevices
-        document.querySelector(".services").style.setProperty("background-color", "#333333");
-        document.querySelectorAll(".services .container .box").forEach(e => {
-            e.style.setProperty("background-color", "#191919");
+        }
+    });
+    // team-members
+    document.querySelectorAll(".team-members .container .box").forEach(e => {
+        e.style.setProperty("--psedou-color", "#333333");
+        e.style.setProperty("--team-slider-color", "#474747");
+    });
+    document.querySelectorAll(".team-members .container .box .pic").forEach(e => {
+        e.style.setProperty("background-color", "transparent");
+    });
+    document.querySelectorAll(".social a").forEach(e => {
+        e.style.setProperty("background-color", "transparent");
+    });
+    // sevices
+    darkgrey(document.querySelector(".services"));
+    document.querySelectorAll(".services .container .box").forEach(e => {
+        black(e);
+        e.style.setProperty("box-shadow", "0 12px 20px 0 rgb(255 255 255 / 8%), 0 2px 4px 0 rgb(255 255 255 / 7%)");
+        e.onmouseenter = function () {
+            e.style.setProperty("box-shadow", "0 12px 20px 0 rgb(255 255 255 / 15%), 0 2px 4px 0 rgb(255 255 255 / 15%)");
+        };
+        e.onmouseleave = function () {
             e.style.setProperty("box-shadow", "0 12px 20px 0 rgb(255 255 255 / 8%), 0 2px 4px 0 rgb(255 255 255 / 7%)");
-            e.onmouseenter = function () {
-                e.style.setProperty("box-shadow", "0 12px 20px 0 rgb(255 255 255 / 15%), 0 2px 4px 0 rgb(255 255 255 / 15%)");
-            };
-            e.onmouseleave = function () {
-                e.style.setProperty("box-shadow", "0 12px 20px 0 rgb(255 255 255 / 8%), 0 2px 4px 0 rgb(255 255 255 / 7%)");
-            };
-        });
-        document.querySelectorAll(".services .container .box .number").forEach(e => {
-            e.style.setProperty("background-color", "#292929");
-            e.firstElementChild.style.setProperty("background-color", "#292929");
-        });
-        // skills
-        let spansPrecent = document.querySelectorAll(".our-skills .container .prog-languages .language .line span");
-        spansPrecent[0].style.setProperty("width", "80%");
-        spansPrecent[1].style.setProperty("width", "85%");
-        spansPrecent[2].style.setProperty("width", "70%");
-        spansPrecent[3].style.setProperty("width", "80%");
-        document.querySelectorAll(".our-skills .container .prog-languages .language .line").forEach(e => {
-            e.style.setProperty("background-color", "#333333");
-        });
-        // how it works
-        document.querySelector(".work").style.setProperty("background-color", "#333333");
-        document.querySelector(".work .container .pic").style.setProperty("background-color", "#333333");
-        document.querySelectorAll(".work .container .box .content").forEach(e => {
-            e.style.setProperty("background-color", "#404040");
-            e.style.setProperty("--main-background-color", "#333333");
-        });
-        document.querySelectorAll(".work .container .box .content .logo").forEach(e => {
-            e.style.setProperty("background-color", "transparent");
-        });
-        // events
-        document.querySelectorAll(".events .container .box .count-down .unit").forEach(e => {
-            e.style.setProperty("background-color", "transparent");
+        };
+    });
+    document.querySelectorAll(".services .container .box .number").forEach(e => {
+        e.style.setProperty("background-color", "#292929");
+        e.firstElementChild.style.setProperty("background-color", "#292929");
+    });
+    // skills
+    let spansPrecent = document.querySelectorAll(".our-skills .container .prog-languages .language .line span");
+    spansPrecent[0].style.setProperty("width", "80%");
+    spansPrecent[1].style.setProperty("width", "85%");
+    spansPrecent[2].style.setProperty("width", "70%");
+    spansPrecent[3].style.setProperty("width", "80%");
+    document.querySelectorAll(".our-skills .container .prog-languages .language .line").forEach(e => {
+        darkgrey(e);
+    });
+    // how it works
+    darkgrey(document.querySelector(".work"));
+    darkgrey(document.querySelector(".work .container .pic"));
+    document.querySelectorAll(".work .container .box .content").forEach(e => {
+        e.style.setProperty("background-color", "#404040");
+        e.style.setProperty("--main-background-color", "#333333");
+    });
+    document.querySelectorAll(".work .container .box .content .logo").forEach(e => {
+        e.style.setProperty("background-color", "transparent");
+    });
+    // events
+    document.querySelectorAll(".events .container .box .count-down .unit").forEach(e => {
+        black(e);
+        e.style.setProperty("border-color", "#333333");
+        e.onmouseenter = function () {
+            e.style.setProperty("border-color", "var(--main-color)");
+            e.querySelector(".count-down .unit div").style.setProperty("border-color", "var(--main-color)");
+        };
+        e.onmouseleave = function () {
             e.style.setProperty("border-color", "#333333");
-            e.onmouseenter = function () {
-                e.style.setProperty("border-color", "var(--main-color)");
-                e.querySelector(".count-down .unit div").style.setProperty("border-color", "var(--main-color)");
-            };
-            e.onmouseleave = function () {
-                e.style.setProperty("border-color", "#333333");
-                e.querySelector(".count-down .unit div").style.setProperty("border-color", "#333333");
-            };
-        });
-        document.querySelectorAll(".count-down .unit div").forEach(e => {
-            e.style.setProperty("border-color", "#333333");
-        });
-        document.querySelector(".events form").style.setProperty("background-color", "#333333");
-        // pricing
-        document.querySelector(".pricing").style.setProperty("background-color", "#333333");
-        document.querySelector(".pricing .dots-1").style.setProperty("background-color", "#333333");
-        document.querySelector(".pricing .dots-2").style.setProperty("background-color", "#333333");
-        document.querySelectorAll(".pricing .container .box").forEach(e => {
+            e.querySelector(".count-down .unit div").style.setProperty("border-color", "#333333");
+        };
+    });
+    document.querySelectorAll(".count-down .unit div").forEach(e => {
+        e.style.setProperty("border-color", "#333333");
+    });
+    darkgrey(document.querySelector(".events form"));
+    // pricing
+    darkgrey(document.querySelector(".pricing"));
+    darkgrey(document.querySelector(".pricing .dots-1"));
+    darkgrey(document.querySelector(".pricing .dots-2"));
+    document.querySelectorAll(".pricing .container .box").forEach(e => {
+        black(e);
+        e.style.setProperty("--pricing-psedou-color", "transparent");
+    });
+    // top videos
+    darkgrey(document.querySelector(".video .container .select .shuffle"));
+    darkgrey(document.querySelector(".video .container .play-video"));
+    black(document.querySelector(".video .container p"));
+    document.querySelectorAll(".video .container .select .video-select ul li span").forEach(e => {
+        e.style.setProperty("color", "white");
+    });
+    document.querySelectorAll(".video .container .select .video-select ul li").forEach(e => {
+        e.onmouseenter = function () {
+            e.style.setProperty("background-color", "#9f9f9f6b");
+        }
+        e.onmouseleave = function () {
             e.style.setProperty("background-color", "#191919");
-            e.style.setProperty("--pricing-psedou-color", "transparent");
-        });
-        // top videos
-        document.querySelector(".video .container .select .shuffle").style.setProperty("background-color", "#333333");
-        document.querySelector(".video .container .play-video").style.setProperty("background-color", "#333333");
-        document.querySelector(".video .container p").style.setProperty("background-color", "#191919");
-        document.querySelectorAll(".video .container .select .video-select ul li span").forEach(e => {
-            e.style.setProperty("color", "white");
-        });
-        document.querySelectorAll(".video .container .select .video-select ul li").forEach(e => {
-            e.onmouseenter = function () {
-                e.style.setProperty("background-color", "#9f9f9f6b");
-            }
-            e.onmouseleave = function () {
-                e.style.setProperty("background-color", "#191919");
-            }
-        });
-        // Our Awesome Stats
-        document.querySelectorAll(".stats .container .box").forEach(e => {
-            e.style.setProperty("background-color", "#191919");
-        });
-        document.querySelector(".stats").style.setProperty("--stats-before", "black");
+        }
+    });
+    // Our Awesome Stats
+    document.querySelectorAll(".stats .container .box").forEach(e => {
+        black(e);
+    });
+    document.querySelector(".stats").style.setProperty("--stats-before", "black");
 }
 if (window.localStorage.getItem("dark") === "true") { 
     darkMode();
@@ -316,13 +327,13 @@ darkModeBtn.addEventListener("click", (e) => {
         });
         // header
         document.querySelectorAll(".nav-bar a").forEach(e => {
-            e.style.cssText = "background-color: none; color: black;";
+            white(e);
         });
-        document.querySelector(".landing").style.setProperty("background-color", "var(--main-background-color)");
+        grey(document.querySelector(".landing"));
         document.querySelector("header").style.cssText = "box-shadow: 0 2px 15px rgb(0 0 0 / 10%);";
-        document.querySelector(".mega-menu").style.setProperty("background-color", "white");
+        white(document.querySelector(".mega-menu"));
         document.querySelectorAll("ul.nav-bar li a").forEach(e => {
-            e.style.color = "black";
+            white(e);
             e.onmouseenter = function () {
                 e.style.color = "var(--main-color)";
             };
@@ -341,16 +352,16 @@ darkModeBtn.addEventListener("click", (e) => {
                 e.style.setProperty("box-shadow", "0 2px 15px rgb(0 0 0 / 10%)");
             };
         });
-        document.querySelector(".gallery").style.setProperty("background-color", "var(--main-background-color)");
+        grey(document.querySelector(".gallery"));
         document.querySelectorAll(".gallery .container .picture").forEach(e => {
             e.style.setProperty("border-color", "white");
         });
         document.querySelectorAll(".features .container .box .image").forEach(e => {
             e.style.setProperty("--psedou-color", "white");
         });
-        document.querySelector(".testimonials").style.setProperty("background-color", "var(--main-background-color)");
+        grey(document.querySelector(".testimonials"));
         document.querySelectorAll(".testimonials .container .box").forEach(e => {
-            e.style.setProperty("background-color", "white");
+            white(e);
             e.style.setProperty("box-shadow", "0 2px 15px rgb(0 0 0 / 10%)");
             e.onmouseenter = function () {
                 e.style.setProperty("box-shadow", "0 2px 15px rgb(0 0 0 / 30%)");
@@ -359,25 +370,19 @@ darkModeBtn.addEventListener("click", (e) => {
                 e.style.setProperty("box-shadow", "0 2px 15px rgb(0 0 0 / 10%)");
             }
         });
-        document.querySelectorAll(".testimonials .container .box .pic").forEach(e => {
-            e.style.setProperty("border-color", "var(--main-background-color)");
-        });
         document.querySelectorAll(".team-members .container .box").forEach(e => {
             e.style.setProperty("--psedou-color", "#eee");
         });
         document.querySelectorAll(".team-members .container .box").forEach(e => {
             e.style.setProperty("--team-slider-color", "#c1c1c1");
         });
-        document.querySelectorAll(".team-members .container .box .pic").forEach(e => {
-            e.style.setProperty("background-color","transparent");
-        });
         document.querySelectorAll(".social a").forEach(e => {
-            e.style.setProperty("background-color","transparent");
+            e.style.setProperty("background-color", "transparent");
         });
         // sevices
-        document.querySelector(".services").style.setProperty("background-color", "var(--main-background-color)");
+        grey(document.querySelector(".services"));
         document.querySelectorAll(".services .container .box").forEach(e => {
-            e.style.setProperty("background-color", "white");
+            white(e);
             e.style.setProperty("box-shadow", "0 12px 20px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 7%)");
             e.onmouseenter = function () {
                 e.style.setProperty("box-shadow", "0 12px 20px 0 rgb(0 0 0 / 15%), 0 2px 4px 0 rgb(0 0 0 / 15%)");
@@ -392,36 +397,36 @@ darkModeBtn.addEventListener("click", (e) => {
         });
         // skills
         document.querySelectorAll(".our-skills .container .prog-languages .language .line").forEach(e => {
-            e.style.setProperty("background-color", "var(--main-background-color)");
+            grey(e);
         });
         // how it works
-        document.querySelector(".work").style.setProperty("background-color", "var(--main-background-color)");
-        document.querySelector(".work .container .pic").style.setProperty("background-color", "var(--main-background-color)");
+        grey(document.querySelector(".work"));
+        grey(document.querySelector(".work .container .pic"));
         document.querySelectorAll(".work .container .box .content").forEach(e => {
             e.style.setProperty("background-color", "#f9f9f9");
             e.style.setProperty("--main-background-color", "#ececec");
         });
         // events
         document.querySelectorAll(".events .container .box .count-down .unit").forEach(e => {
-            e.style.setProperty("background-color", "white");
             e.style.setProperty("border-color", "var(--main-background-color)");
+            white(e);
         });
         document.querySelectorAll(".count-down .unit div").forEach(e => {
             e.style.setProperty("border-color", "var(--main-background-color)");
         });
-        document.querySelector(".events form").style.setProperty("background-color", "var(--main-background-color)");
+        grey(document.querySelector(".events form"));
         // pricing
-        document.querySelector(".pricing").style.setProperty("background-color", "var(--main-background-color)");
-        document.querySelector(".pricing .dots-1").style.setProperty("background-color", "var(--main-background-color)");
-        document.querySelector(".pricing .dots-2").style.setProperty("background-color", "var(--main-background-color)");
+        grey(document.querySelector(".pricing .dots-1"));
+        grey(document.querySelector(".pricing .dots-2"));
+        grey(document.querySelector(".pricing"));
         document.querySelectorAll(".pricing .container .box").forEach(e => {
-            e.style.setProperty("background-color", "white");
+            white(e);
             e.style.setProperty("--pricing-psedou-color", "rgb(248, 248, 248)");
         });
         // top videos
-        document.querySelector(".video .container .select .shuffle").style.setProperty("background-color", "var(--main-background-color)");
-        document.querySelector(".video .container .play-video").style.setProperty("background-color", "var(--main-background-color)");
-        document.querySelector(".video .container p").style.setProperty("background-color", "white");
+        grey(document.querySelector(".select .shuffle"));
+        grey(document.querySelector(".play-video"));
+        white(document.querySelector(".video .container p"));
         document.querySelectorAll(".video .container .select .video-select ul li span").forEach(e => {
             e.style.setProperty("color", "black");
         });
@@ -436,7 +441,7 @@ darkModeBtn.addEventListener("click", (e) => {
         });
         // Our Awesome Stats
         document.querySelectorAll(".stats .container .box").forEach(e => {
-            e.style.setProperty("background-color", "white");
+            white(e);
         });
         document.querySelector(".stats").style.setProperty("--stats-before", "white");
     } else {
