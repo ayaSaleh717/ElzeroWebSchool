@@ -319,13 +319,11 @@ header .container ul.nav-bar li .mega-menu ul.links li:hover a i {
 /* end megamenu */
 /* start dark mode button */
 button#dark-mode {
-    margin-right: 15px;
     width: 50px;
     height: 25px;
     border-radius: 20px;
     border: 0;
     background-color: #38464c;
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -337,7 +335,17 @@ button#dark-mode {
     position: fixed;
     top: 18px;
     z-index: 30;
-    right: 5px;
+    right: 15px;
+}
+@media (max-width: 1199px) {
+    button#dark-mode {
+        right: 5px;
+    }
+}
+@media (max-width: 767px) {
+    button#dark-mode {
+        top: 10px;
+    }
 }
 button#dark-mode span {
     display: block;
@@ -759,9 +767,8 @@ padding-bottom: var(--main-padding);
 }
 .testimonials .container .box .pic {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    border: 10px solid var(--main-background-color);
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     overflow: hidden;
     right: -20px;
@@ -1441,10 +1448,13 @@ padding-bottom: var(--main-padding);
     height: 100%;
 }
 .video .container .select .video-select ul::-webkit-scrollbar {
-    width: 3px;
+    width: 7px;
 }
 .video .container .select .video-select ul::-webkit-scrollbar-thumb {
     background-color: #b6b6b6;
+}
+.video .container .select .video-select ul::-webkit-scrollbar-thumb:hover {
+    background-color: #848484;
 }
 .video .container .select .video-select ul li {
     padding: 20px;
