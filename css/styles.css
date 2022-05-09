@@ -1681,6 +1681,7 @@ background-color: var(--background-color);
 }
 .discount .reguest h2 {
     font-size: 40px;
+    color: var(--text-color);
 }
 .discount .reguest form {
     display: flex;
